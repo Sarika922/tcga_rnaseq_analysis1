@@ -1,0 +1,35 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+plot_expression        1
+total                  2
+
+Select jobs to execute...
+
+[Sat Nov  2 06:29:53 2024]
+rule plot_expression:
+    input: output/NKX2-1_expression_data.csv
+    output: output/NKX2-1_expression_boxplot.png
+    jobid: 1
+    reason: Missing output files: output/NKX2-1_expression_boxplot.png
+    resources: tmpdir=/tmp
+
+[Sat Nov  2 06:29:54 2024]
+Error in rule plot_expression:
+    jobid: 1
+    input: output/NKX2-1_expression_data.csv
+    output: output/NKX2-1_expression_boxplot.png
+
+RuleException:
+CalledProcessError in file /home/bec51319.iitr/workplace/tcga_data_analysis/expression_data.smk, line 63:
+Command 'set -euo pipefail;  Rscript --vanilla /home/bec51319.iitr/workplace/tcga_data_analysis/.snakemake/scripts/tmp3zbnb572.expression_boxplot.R' returned non-zero exit status 1.
+  File "/home/bec51319.iitr/workplace/tcga_data_analysis/expression_data.smk", line 63, in __rule_plot_expression
+  File "/home/bec51319.iitr/miniforge3/envs/tcga_data_analysis/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-02T062952.053173.snakemake.log

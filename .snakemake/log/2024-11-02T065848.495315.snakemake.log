@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count
+-----------------------  -------
+all                            1
+extract_expression_data        1
+plot_expression                1
+total                          3
+
+Select jobs to execute...
+
+[Sat Nov  2 06:58:49 2024]
+rule extract_expression_data:
+    input: data/gdc_sample_sheet.tsv, data/tcga_data/.extraction_complete
+    output: output/NKX2-1_expression_data.csv
+    jobid: 2
+    reason: Missing output files: output/NKX2-1_expression_data.csv
+    resources: tmpdir=/tmp
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-02T065848.495315.snakemake.log

@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in rule extract_tcga_data in file /home/bec51319.iitr/workplace/tcga_data_analysis/expression_data.smk, line 8:
+Missing input files for rule extract_tcga_data:
+    output: data/tcga_data
+    affected files:
+        data/tcga_data/tcga_data.tar.gz

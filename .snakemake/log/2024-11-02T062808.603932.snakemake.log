@@ -1,0 +1,64 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                        count
+-----------------------  -------
+all                            1
+extract_data                   1
+extract_expression_data        1
+plot_expression                1
+total                          4
+
+Select jobs to execute...
+
+[Sat Nov  2 06:28:10 2024]
+rule extract_data:
+    input: data/tcga_data.tar.gz
+    output: data/tcga_data/.extraction_complete
+    jobid: 3
+    reason: Missing output files: data/tcga_data/.extraction_complete
+    resources: tmpdir=/tmp
+
+[Sat Nov  2 06:28:29 2024]
+Finished job 3.
+1 of 4 steps (25%) done
+Select jobs to execute...
+
+[Sat Nov  2 06:28:29 2024]
+rule extract_expression_data:
+    input: data/gdc_sample_sheet.tsv, data/tcga_data/.extraction_complete
+    output: output/NKX2-1_expression_data.csv
+    jobid: 2
+    reason: Missing output files: output/NKX2-1_expression_data.csv; Input files updated by another job: data/tcga_data/.extraction_complete
+    resources: tmpdir=/tmp
+
+[Sat Nov  2 06:28:36 2024]
+Finished job 2.
+2 of 4 steps (50%) done
+Select jobs to execute...
+
+[Sat Nov  2 06:28:36 2024]
+rule plot_expression:
+    input: output/NKX2-1_expression_data.csv
+    output: output/NKX2-1_expression_boxplot.png
+    jobid: 1
+    reason: Missing output files: output/NKX2-1_expression_boxplot.png; Input files updated by another job: output/NKX2-1_expression_data.csv; Code has changed since last execution
+    resources: tmpdir=/tmp
+
+[Sat Nov  2 06:28:36 2024]
+Error in rule plot_expression:
+    jobid: 1
+    input: output/NKX2-1_expression_data.csv
+    output: output/NKX2-1_expression_boxplot.png
+
+RuleException:
+WorkflowError in file /home/bec51319.iitr/workplace/tcga_data_analysis/expression_data.smk, line 63:
+Failed to open source file /home/bec51319.iitr/workplace/tcga_data_analysis/scripts/plot_expression.R
+FileNotFoundError: [Errno 2] No such file or directory: '/home/bec51319.iitr/workplace/tcga_data_analysis/scripts/plot_expression.R'
+  File "/home/bec51319.iitr/workplace/tcga_data_analysis/expression_data.smk", line 63, in __rule_plot_expression
+  File "/home/bec51319.iitr/miniforge3/envs/tcga_data_analysis/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-02T062808.603932.snakemake.log

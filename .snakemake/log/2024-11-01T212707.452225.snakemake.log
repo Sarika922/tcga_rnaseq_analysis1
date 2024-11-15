@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in rule filter_samples in file /home/bec51319.iitr/workplace/tcga_data_analysis/expression_data.smk, line 19:
+Missing input files for rule filter_samples:
+    output: output/NKX2-1_expression_data.csv
+    affected files:
+        data/tcga_data

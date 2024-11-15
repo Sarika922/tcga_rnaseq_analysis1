@@ -1,0 +1,37 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+plot_expression        1
+total                  2
+
+Select jobs to execute...
+
+[Fri Nov  1 21:53:26 2024]
+rule plot_expression:
+    input: output/NKX2-1_expression_data.csv
+    output: output/NKX2-1_expression_boxplot.png
+    jobid: 1
+    reason: Missing output files: output/NKX2-1_expression_boxplot.png
+    resources: tmpdir=/tmp
+
+[Fri Nov  1 21:53:29 2024]
+Finished job 1.
+1 of 2 steps (50%) done
+Select jobs to execute...
+
+[Fri Nov  1 21:53:29 2024]
+localrule all:
+    input: output/NKX2-1_expression_boxplot.png
+    jobid: 0
+    reason: Input files updated by another job: output/NKX2-1_expression_boxplot.png
+    resources: tmpdir=/tmp
+
+[Fri Nov  1 21:53:29 2024]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2024-11-01T215325.168779.snakemake.log
